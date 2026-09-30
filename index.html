@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Narith Phone Shop - Smartphones and accessories.">
+<title>Narith Phone Shop</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#101114;--muted:#6b7280;--line:#e5e7eb;--dark:#0b0c0f;--accent:#111827}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.logo{font-weight:800;font-size:21px;letter-spacing:-.7px}.logo span{font-weight:400;color:#777}
+nav a{color:#333;text-decoration:none;margin-left:24px;font-size:14px}nav a:hover{color:#000}
+.cart-btn{border:1px solid #ddd;background:#111;color:#fff;border-radius:999px;padding:10px 16px;cursor:pointer;font-weight:700}
+.hero{background:linear-gradient(135deg,#0b0c0f,#252832);color:white}
+.hero-inner{max-width:1180px;margin:auto;padding:86px 20px 92px;display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center}
+.badge{display:inline-block;border:1px solid #555;border-radius:999px;padding:7px 12px;font-size:12px;color:#ddd;margin-bottom:18px}
+h1{font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-3px;margin:0 0 20px}
+.hero p{color:#c9ccd2;font-size:18px;line-height:1.6;max-width:600px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{padding:13px 19px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #444;display:inline-block}
+.btn.light{background:white;color:#111;border-color:white}.btn.dark{color:white;background:#16181d}
+.phone-art{min-height:330px;border-radius:28px;background:radial-gradient(circle at 50% 35%,#5f6470,#15171c 55%,#0b0c0f);display:flex;align-items:center;justify-content:center;box-shadow:0 25px 70px #0008}
+.phone{width:145px;height:280px;border:6px solid #343841;border-radius:28px;background:linear-gradient(145deg,#262a33,#08090b);position:relative;box-shadow:0 25px 50px #0009}.phone:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:55px;height:18px;border-radius:12px;background:#000}.phone:after{content:"";position:absolute;inset:30px 12px 12px;border-radius:20px;background:linear-gradient(160deg,#cbd5e1,#334155 45%,#0f172a)}
+section{max-width:1180px;margin:auto;padding:72px 20px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px;gap:20px}.section-head h2{font-size:34px;letter-spacing:-1.5px;margin:0}.section-head p{color:var(--muted);margin:0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.filter{border:1px solid #ddd;background:#fff;border-radius:999px;padding:9px 14px;cursor:pointer}.filter.active{background:#111;color:#fff;border-color:#111}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.product:hover{transform:translateY(-3px);box-shadow:0 12px 30px #1111}.pic{height:205px;background:linear-gradient(145deg,#eef0f3,#d9dce2);display:flex;align-items:center;justify-content:center;font-size:46px}.info{padding:17px}.brand{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px}.product h3{margin:6px 0;font-size:17px}.price{font-size:18px;font-weight:800;margin:12px 0}.add{width:100%;padding:11px;border:0;border-radius:9px;background:#111;color:#fff;font-weight:700;cursor:pointer}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:#fff;border:1px solid var(--line);padding:25px;border-radius:18px}.feature b{display:block;margin-bottom:8px}.feature p{color:var(--muted);line-height:1.5;margin:0}
+.contact{background:#111;color:#fff;border-radius:26px;padding:42px;display:grid;grid-template-columns:1fr 1fr;gap:30px}.contact p{color:#bbb;line-height:1.6}.contact a{color:white}.contact-form{background:#191b20;padding:24px;border-radius:18px}.contact-form input,.contact-form textarea{width:100%;margin:7px 0;padding:12px;border-radius:8px;border:1px solid #363941;background:#0f1013;color:white}.contact-form textarea{height:100px;resize:vertical}
+footer{background:#08090b;color:#999;text-align:center;padding:28px 20px;font-size:13px}
+.drawer{position:fixed;right:-430px;top:0;width:min(430px,100%);height:100%;background:#fff;z-index:50;box-shadow:-15px 0 50px #0003;transition:.25s;padding:24px;overflow:auto}.drawer.open{right:0}.drawer-top{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eee;border-radius:50%;width:36px;height:36px;cursor:pointer}.cart-item{border-bottom:1px solid #eee;padding:15px 0}.cart-item strong{display:block}.qty{display:flex;gap:8px;align-items:center;margin-top:8px}.qty button{border:1px solid #ddd;background:white;border-radius:6px;padding:4px 9px}.total{font-size:20px;font-weight:800;margin:22px 0}.order input,.order textarea{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:8px}.order textarea{height:80px}.order button{width:100%;padding:13px;border:0;border-radius:9px;background:#111;color:#fff;font-weight:800;cursor:pointer}
+@media(max-width:850px){nav a{display:none}.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.features,.contact{grid-template-columns:1fr}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.hero-inner{padding-top:60px}.phone-art{min-height:250px}section{padding:52px 16px}.contact{padding:25px}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<div class="logo">Narith <span>Phone Shop</span></div>
+<nav><a href="#home">Home</a><a href="#phones">Phones</a><a href="#accessories">Accessories</a><a href="#contact">Contact</a></nav>
+<button class="cart-btn" onclick="openCart()">Cart (<span id="count">0</span>)</button>
+</div></header>
+
+<main>
+<section class="hero" id="home" style="max-width:none;padding:0">
+<div class="hero-inner">
+<div><div class="badge">SMARTPHONES • ACCESSORIES • SERVICE</div>
+<h1>Premium tech.<br>Made simple.</h1>
+<p>Discover the latest smartphones and accessories from the world's leading brands at Narith Phone Shop.</p>
+<div class="cta"><a class="btn light" href="#phones">Shop Phones</a><a class="btn dark" href="#contact">Contact Us</a></div></div>
+<div class="phone-art"><div class="phone"></div></div>
+</div></section>
+
+<section id="phones">
+<div class="section-head"><div><h2>Featured Phones</h2><p>Explore our popular smartphone collection.</p></div></div>
+<div class="filters">
+<button class="filter active" onclick="filterProducts('All',this)">All</button>
+<button class="filter" onclick="filterProducts('iPhone',this)">iPhone</button>
+<button class="filter" onclick="filterProducts('Samsung',this)">Samsung</button>
+<button class="filter" onclick="filterProducts('OPPO',this)">OPPO</button>
+<button class="filter" onclick="filterProducts('Xiaomi',this)">Xiaomi</button>
+<button class="filter" onclick="filterProducts('HONOR',this)">HONOR</button>
+<button class="filter" onclick="filterProducts('Huawei',this)">Huawei</button>
+</div>
+<div class="grid" id="products"></div>
+</section>
+
+<section id="accessories">
+<div class="section-head"><div><h2>Accessories</h2><p>Essential accessories for your devices.</p></div></div>
+<div class="grid" id="accessory-grid"></div>
+</section>
+
+<section>
+<div class="features">
+<div class="feature"><b>✓ Genuine Products</b><p>Quality products from trusted brands.</p></div>
+<div class="feature"><b>✓ Easy Ordering</b><p>Order by cart, phone, Messenger or Telegram.</p></div>
+<div class="feature"><b>✓ Friendly Support</b><p>Contact us for product questions and availability.</p></div>
+</div>
+</section>
+
+<section id="contact">
+<div class="contact">
+<div><h2>Let's talk tech.</h2><p>Have a question or want to check stock? Contact Narith Phone Shop directly.</p>
+<p><strong>Phone:</strong> <a href="tel:+85589545553">+855 89 545 553</a><br>
+<strong>Telegram:</strong> <a href="https://t.me/Narithstore">@Narithstore</a><br>
+<strong>Messenger:</strong> <a href="https://m.me/">Message us</a></p>
+<p><strong>Opening hours:</strong><br>Monday – Sunday: 8:00 AM – 8:00 PM</p></div>
+<div class="contact-form"><h3>Send us a message</h3>
+<form onsubmit="sendMessage(event)"><input id="name" placeholder="Your name" required><input id="phone" placeholder="Phone number" required><textarea id="message" placeholder="What are you looking for?"></textarea><button class="btn light" type="submit">Send via Telegram</button></form></div>
+</div>
+</section>
+</main>
+<footer>© 2026 Narith Phone Shop. All rights reserved.</footer>
+
+<aside class="drawer" id="drawer"><div class="drawer-top"><h2>Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
+<div id="cart-items"></div><div class="total">Total: $<span id="total">0.00</span></div>
+<form class="order" onsubmit="submitOrder(event)"><h3>Order Details</h3><input id="orderName" placeholder="Full name" required><input id="orderPhone" placeholder="Phone number" required><input id="orderAddress" placeholder="Delivery address"><textarea id="orderNote" placeholder="Order note"></textarea><button type="submit">Place Order</button></form>
+<p style="font-size:12px;color:#777">Demo store: replace the contact details and connect your preferred ordering/payment system before launch.</p>
+</aside>
+
+<script>
+const products=[
+{name:"iPhone 17 Pro Max",brand:"iPhone",price:1199,icon:""},
+{name:"iPhone 17",brand:"iPhone",price:899,icon:""},
+{name:"Galaxy S26 Ultra",brand:"Samsung",price:1299,icon:"S"},
+{name:"Galaxy S26",brand:"Samsung",price:899,icon:"S"},
+{name:"OPPO Find X9 Pro",brand:"OPPO",price:999,icon:"O"},
+{name:"OPPO Reno Series",brand:"OPPO",price:499,icon:"O"},
+{name:"Xiaomi 16 Pro",brand:"Xiaomi",price:799,icon:"X"},
+{name:"HONOR Magic Series",brand:"HONOR",price:699,icon:"H"},
+{name:"Huawei Pura Series",brand:"Huawei",price:749,icon:"H"}
+];
+const accessories=[
+{name:"Premium Phone Case",brand:"Accessory",price:15,icon:"▣"},
+{name:"Fast USB-C Charger",brand:"Accessory",price:25,icon:"⚡"},
+{name:"USB-C Cable",brand:"Accessory",price:10,icon:"⌁"},
+{name:"Wireless Earbuds",brand:"Accessory",price:39,icon:"◉"}
+];
+let cart=[];
+
+function render(list=products){document.getElementById("products").innerHTML=list.map((p,i)=>`<article class="product"><div class="pic">${p.icon}</div><div class="info"><div class="brand">${p.brand}</div><h3>${p.name}</h3><div class="price">$${p.price.toFixed(2)}</div><button class="add" onclick='addToCart(${JSON.stringify(p)})'>Add to Cart</button></div></article>`).join("")}
+function renderAccessories(){document.getElementById("accessory-grid").innerHTML=accessories.map(p=>`<article class="product"><div class="pic">${p.icon}</div><div class="info"><div class="brand">Accessory</div><h3>${p.name}</h3><div class="price">$${p.price.toFixed(2)}</div><button class="add" onclick='addToCart(${JSON.stringify(p)})'>Add to Cart</button></div></article>`).join("")}
+function filterProducts(brand,btn){document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));btn.classList.add("active");render(brand==="All"?products:products.filter(p=>p.brand===brand))}
+function addToCart(p){let x=cart.find(i=>i.name===p.name);x?x.qty++:cart.push({...p,qty:1});updateCart();openCart()}
+function updateCart(){document.getElementById("count").textContent=cart.reduce((a,b)=>a+b.qty,0);document.getElementById("cart-items").innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-item"><strong>${p.name}</strong><span>$${p.price.toFixed(2)} × ${p.qty}</span><div class="qty"><button onclick="changeQty(${i},-1)">−</button><span>${p.qty}</span><button onclick="changeQty(${i},1)">+</button></div></div>`).join(""):"<p>Your cart is empty.</p>";document.getElementById("total").textContent=cart.reduce((a,b)=>a+b.price*b.qty,0).toFixed(2)}
+function changeQty(i,n){cart[i].qty+=n;if(cart[i].qty<=0)cart.splice(i,1);updateCart()}
+function openCart(){document.getElementById("drawer").classList.add("open")}
+function closeCart(){document.getElementById("drawer").classList.remove("open")}
+function submitOrder(e){e.preventDefault();if(!cart.length){alert("Your cart is empty.");return}let lines=cart.map(p=>`${p.name} x${p.qty}`).join(", ");alert(`Thank you, ${document.getElementById("orderName").value}! Your order request has been prepared. Items: ${lines}.\\n\\nConnect your real Messenger/Telegram/phone details before launch.`)}
+function sendMessage(e){e.preventDefault();alert("Your message form is ready. Connect your Telegram username in the HTML to send it directly.")}
+render();renderAccessories();updateCart();
+</script>
+</body>
+</html>
